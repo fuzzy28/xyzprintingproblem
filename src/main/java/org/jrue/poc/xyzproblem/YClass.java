@@ -1,30 +1,16 @@
 package org.jrue.poc.xyzproblem;
 
-public class YClass extends LetterClass {
-
-	public YClass(int scale) {
-		super(scale);
-	}
+public class YClass implements Letter {
 
 	@Override
-	public void draw() {
-		int diag = 0;
-		int antiDiag = board[0].length - 1;
-		for (int i = 0; i < board.length; i++) {			
-			if(i < (board.length / 2)) {
-				while(diag < board[i].length) {
-					board[i][diag++] = "*";
-					break;
-				}
-				
-				while(antiDiag < board[i].length) {
-					board[i][antiDiag--] = "*";
-					break;
-				}
-			} else {
-				board[i][(board[i].length -1) / 2] = "*";
-			}
-		}
-		super.draw();
+	public void print(int scale, int row, int col) {
+		  if(((row == col || (row + col) == scale -1)
+	                && (scale / 2 > row))
+	                || (scale / 2 <= row && col == scale /2 )) {
+	        	  System.out.print("*");
+		  } else {
+		          System.out.print(" ");
+		  }
 	}
+
 }
